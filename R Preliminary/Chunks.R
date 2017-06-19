@@ -63,7 +63,7 @@ plot(data.HALE.1995.male$val,
      col="skyblue",
      cex=1.5,
      xlim = c(52,75), 
-     ylim=c(5, 12), 
+     ylim=c(6, 12), 
      axes=F,
      xlab="Healthy life expectancy (HALE)",
      ylab="Years lived with disability (YLDs)")
@@ -76,8 +76,8 @@ points(data.HALE.2015.male$val,
 
 # Accelerating expansion of morbidity
 
-abline(lm(data.YLD.1995.male ~ data.HALE.1995.male$val), col="skyblue", lty=2)
-abline(lm(data.YLD.2015.male ~ data.HALE.2015.male$val), col="blue", lty=2)
+abline(lm(data.YLD.1995.male ~ data.HALE.1995.male$val), col="skyblue", lty=1)
+abline(lm(data.YLD.2015.male ~ data.HALE.2015.male$val), col="blue", lty=1)
 
 summary(lm(data.YLD.1995.male ~ data.HALE.1995.male$val))
 confint(lm(data.YLD.1995.male ~ data.HALE.1995.male$val))
@@ -105,7 +105,7 @@ gap.YLD.2015.male - gap.YLD.1995.male
 
 data.LE.1995.female <- DT.LE[DT.LE$year == "1995" & DT.LE$sex == "Female", ]
 data.HALE.1995.female <- DT.HALE[DT.HALE$year == "1995" & DT.HALE$sex == "Female", ]
-data.YLD.1995.female <- data.LE.1995$val - data.HALE.1995$val
+data.YLD.1995.female <- data.LE.1995.female$val - data.HALE.1995.female$val
 
 data.LE.2015.female <- DT.LE[DT.LE$year == "2015" & DT.LE$sex == "Female", ]
 data.HALE.2015.female <- DT.HALE[DT.HALE$year == "2015" & DT.HALE$sex == "Female", ]
@@ -143,10 +143,10 @@ points(data.HALE.2015.female$val,
        col="red",
        cex=1.5)
 
-axis(1, c(min.HALE.2015.male, median.HALE.2015.male, max.HALE.2015.male), col="blue", cex.axis=.6)
-axis(2, c(min.YLD.2015.male, median.YLD.2015.male, max.YLD.2015.male), col="blue", cex.axis=.6)
-axis(3, c(min.HALE.2015.female, median.HALE.2015.female, max.HALE.2015.female), col="red", cex.axis=.6)
-axis(4, c(min.YLD.2015.female, median.YLD.2015.female, max.YLD.2015.female), col="red", cex.axis=.6)
+axis(1, c(min.HALE.2015.male, median.HALE.2015.male, max.HALE.2015.male), col="blue", cex.axis=1)
+axis(2, c(min.YLD.2015.male, median.YLD.2015.male, max.YLD.2015.male), col="blue", cex.axis=1)
+axis(3, c(min.HALE.2015.female, median.HALE.2015.female, max.HALE.2015.female), col="red", cex.axis=1)
+axis(4, c(min.YLD.2015.female, median.YLD.2015.female, max.YLD.2015.female), col="red", cex.axis=1)
 
 legend(52, 12,  
        c("Year 1995 Males","Year 2015 Males", "Year 1995 Females","Year 2015 Females"),
@@ -158,8 +158,8 @@ legend(52, 12,
 
 # Accelerating expansion of morbidity
 
-abline(lm(data.YLD.1995.female ~ data.HALE.1995.female$val), col="pink", lty=2)
-abline(lm(data.YLD.2015.female ~ data.HALE.2015.female$val), col="red", lty=2)
+abline(lm(data.YLD.1995.female ~ data.HALE.1995.female$val), col="pink", lty=1)
+abline(lm(data.YLD.2015.female ~ data.HALE.2015.female$val), col="red", lty=1)
 
 summary(lm(data.YLD.1995.female ~ data.HALE.1995.female$val))
 confint(lm(data.YLD.1995.female ~ data.HALE.1995.female$val))
