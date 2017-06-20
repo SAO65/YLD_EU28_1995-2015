@@ -61,7 +61,7 @@ mad.YLD.2015.male <- round(mad(data.YLD.2015.male), 1)
 plot(data.HALE.1995.male$val, 
      data.YLD.1995.male, 
      col="blue",
-     cex=1.2,
+     cex=1,
      pch=1,
      xlim = c(52,75), 
      ylim=c(6, 12), 
@@ -138,7 +138,7 @@ mad.YLD.2015.female <- round(mad(data.YLD.2015.female), 1)
 points(data.HALE.1995.female$val, 
      data.YLD.1995.female, 
      col="red",
-     cex=1.2,
+     cex=1,
      pch=1)
 
 points(data.HALE.2015.female$val, 
