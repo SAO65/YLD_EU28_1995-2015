@@ -60,8 +60,9 @@ mad.YLD.2015.male <- round(mad(data.YLD.2015.male), 1)
 
 plot(data.HALE.1995.male$val, 
      data.YLD.1995.male, 
-     col="skyblue",
-     cex=1.5,
+     col="blue",
+     cex=1.2,
+     pch=1,
      xlim = c(52,75), 
      ylim=c(6, 12), 
      axes=F,
@@ -72,11 +73,12 @@ plot(data.HALE.1995.male$val,
 points(data.HALE.2015.male$val, 
        data.YLD.2015.male, 
        col="blue",
-       cex=1.5)
+       cex=1.2,
+       pch=16)
 
 # Accelerating expansion of morbidity
 
-abline(lm(data.YLD.1995.male ~ data.HALE.1995.male$val), col="skyblue", lty=1)
+abline(lm(data.YLD.1995.male ~ data.HALE.1995.male$val), col="blue", lty=2)
 abline(lm(data.YLD.2015.male ~ data.HALE.2015.male$val), col="blue", lty=1)
 
 summary(lm(data.YLD.1995.male ~ data.HALE.1995.male$val))
@@ -135,30 +137,29 @@ mad.YLD.2015.female <- round(mad(data.YLD.2015.female), 1)
 
 points(data.HALE.1995.female$val, 
      data.YLD.1995.female, 
-     col="pink",
-     cex=1.5)
+     col="red",
+     cex=1.2,
+     pch=1)
 
 points(data.HALE.2015.female$val, 
        data.YLD.2015.female, 
        col="red",
-       cex=1.5)
+       cex=1.2,
+       pch=16)
 
-axis(1, c(min.HALE.2015.male, median.HALE.2015.male, max.HALE.2015.male), col="blue", cex.axis=1)
-axis(2, c(min.YLD.2015.male, median.YLD.2015.male, max.YLD.2015.male), col="blue", cex.axis=1)
-axis(3, c(min.HALE.2015.female, median.HALE.2015.female, max.HALE.2015.female), col="red", cex.axis=1)
-axis(4, c(min.YLD.2015.female, median.YLD.2015.female, max.YLD.2015.female), col="red", cex.axis=1)
+axis(1, col.axis="black", las=1, cex.axis=0.7, tck=-.01)
+axis(2, col.axis="black", las=2, cex.axis=0.7, tck=-.01)
 
-legend(52, 12,  
+legend(53, 12,  
        c("Year 1995 Males","Year 2015 Males", "Year 1995 Females","Year 2015 Females"),
-       lwd=c(2,2,2,2),
-       pch=c(1,1,1,1),
-       cex=c(1.1,1.1,1.1,1.1),
-       col=c("skyblue", "blue", "pink", "red"),
+       pch=c(1,16,1,16),
+       cex=c(1,1,1,1),
+       col=c("blue", "blue", "red", "red"),
        bty = "n")
 
 # Accelerating expansion of morbidity
 
-abline(lm(data.YLD.1995.female ~ data.HALE.1995.female$val), col="pink", lty=1)
+abline(lm(data.YLD.1995.female ~ data.HALE.1995.female$val), col="red", lty=2)
 abline(lm(data.YLD.2015.female ~ data.HALE.2015.female$val), col="red", lty=1)
 
 summary(lm(data.YLD.1995.female ~ data.HALE.1995.female$val))
