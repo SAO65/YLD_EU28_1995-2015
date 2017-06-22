@@ -32,9 +32,17 @@ data.LE.1995.male <- DT.LE[DT.LE$year == "1995" & DT.LE$sex == "Male", ]
 data.HALE.1995.male <- DT.HALE[DT.HALE$year == "1995" & DT.HALE$sex == "Male", ]
 data.YLD.1995.male <- data.LE.1995.male$val - data.HALE.1995.male$val
 
+data.LE.1995.male.italy <- DT.LE[DT.LE$year == "1995" & DT.LE$sex == "Male" & DT.LE$location == "Italy", ]
+data.HALE.1995.male.italy <- DT.HALE[DT.HALE$year == "1995" & DT.HALE$sex == "Male" & DT.LE$location == "Italy", ]
+data.YLD.1995.male.italy <- data.LE.1995.male.italy$val - data.HALE.1995.male.italy$val
+
 data.LE.2015.male <- DT.LE[DT.LE$year == "2015" & DT.LE$sex == "Male", ]
 data.HALE.2015.male <- DT.HALE[DT.HALE$year == "2015" & DT.HALE$sex == "Male", ]
 data.YLD.2015.male <- data.LE.2015.male$val - data.HALE.2015.male$val
+
+data.LE.2015.male.italy <- DT.LE[DT.LE$year == "2015" & DT.LE$sex == "Male" & DT.LE$location == "Italy", ]
+data.HALE.2015.male.italy <- DT.HALE[DT.HALE$year == "2015" & DT.HALE$sex == "Male" & DT.LE$location == "Italy", ]
+data.YLD.2015.male.italy <- data.LE.2015.male.italy$val - data.HALE.2015.male.italy$val
 
 # Preliminary Point Estimates
 
@@ -75,6 +83,7 @@ points(data.HALE.2015.male$val,
        col="blue",
        cex=1.2,
        pch=16)
+
 
 # Accelerating expansion of morbidity
 
