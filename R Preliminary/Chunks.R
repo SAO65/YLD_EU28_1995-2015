@@ -77,12 +77,24 @@ plot(data.HALE.1995.male$val,
      xlab="Healthy life expectancy (HALE)",
      ylab="Years lived with disability (YLDs)")
 
-
 points(data.HALE.2015.male$val, 
        data.YLD.2015.male, 
        col="blue",
        cex=1.2,
        pch=16)
+
+
+points(data.HALE.1995.male.italy$val, 
+       data.YLD.1995.male.italy, 
+       col="blue",
+       cex=2,
+       pch=5)
+
+points(data.HALE.2015.male.italy$val, 
+       data.YLD.2015.male.italy, 
+       col="blue",
+       cex=2,
+       pch=5)
 
 
 # Accelerating expansion of morbidity
@@ -118,9 +130,18 @@ data.LE.1995.female <- DT.LE[DT.LE$year == "1995" & DT.LE$sex == "Female", ]
 data.HALE.1995.female <- DT.HALE[DT.HALE$year == "1995" & DT.HALE$sex == "Female", ]
 data.YLD.1995.female <- data.LE.1995.female$val - data.HALE.1995.female$val
 
+data.LE.1995.female.italy <- DT.LE[DT.LE$year == "1995" & DT.LE$sex == "Female" & DT.LE$location == "Italy", ]
+data.HALE.1995.female.italy <- DT.HALE[DT.HALE$year == "1995" & DT.HALE$sex == "Female" & DT.LE$location == "Italy", ]
+data.YLD.1995.female.italy <- data.LE.1995.female.italy$val - data.HALE.1995.female.italy$val
+
 data.LE.2015.female <- DT.LE[DT.LE$year == "2015" & DT.LE$sex == "Female", ]
 data.HALE.2015.female <- DT.HALE[DT.HALE$year == "2015" & DT.HALE$sex == "Female", ]
 data.YLD.2015.female <- data.LE.2015.female$val - data.HALE.2015.female$val
+
+data.LE.2015.female.italy <- DT.LE[DT.LE$year == "2015" & DT.LE$sex == "Female" & DT.LE$location == "Italy", ]
+data.HALE.2015.female.italy <- DT.HALE[DT.HALE$year == "2015" & DT.HALE$sex == "Female" & DT.LE$location == "Italy", ]
+data.YLD.2015.female.italy <- data.LE.2015.female.italy$val - data.HALE.2015.female.italy$val
+
 
 # Preliminary Point Estimates
 
@@ -155,6 +176,18 @@ points(data.HALE.2015.female$val,
        col="red",
        cex=1.2,
        pch=16)
+
+points(data.HALE.1995.female.italy$val, 
+       data.YLD.1995.female.italy, 
+       col="red",
+       cex=2,
+       pch=5)
+
+points(data.HALE.2015.female.italy$val, 
+       data.YLD.2015.female.italy, 
+       col="red",
+       cex=2,
+       pch=5)
 
 axis(1, col.axis="black", las=1, cex.axis=0.7, tck=-.01)
 axis(2, col.axis="black", las=2, cex.axis=0.7, tck=-.01)
