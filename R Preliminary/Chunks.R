@@ -63,6 +63,7 @@ data.HALE.2015.female.italy <- DT.HALE[DT.HALE$year == "2015" & DT.HALE$sex == "
 data.YLD.2015.female.italy <- data.LE.2015.female.italy$val - data.HALE.2015.female.italy$val
 
 
+######################################################
 
 # Preliminary Point Estimates
 
@@ -149,10 +150,13 @@ axis(2, col.axis="black", las=2, cex.axis=0.7, tck=-.01)
 legend(53, 12,  
        c("Year 1995 Males","Year 2015 Males", "Year 1995 Females","Year 2015 Females"),
        pch=c(1,16,1,16),
+       lty=c(2,1, 2,1),
        cex=c(1,1,1,1),
        col=c("blue", "blue", "red", "red"),
        bty = "n")
 
+
+######################################################
 
 # Accelerating expansion of morbidity
 
@@ -166,12 +170,17 @@ summary(lm(data.YLD.2015.male ~ data.HALE.2015.male$val))
 confint(lm(data.YLD.2015.male ~ data.HALE.2015.male$val))
 
 
+abline(lm(data.YLD.1995.female ~ data.HALE.1995.female$val), col="red", lty=2)
+abline(lm(data.YLD.2015.female ~ data.HALE.2015.female$val), col="red", lty=1)
+
+summary(lm(data.YLD.1995.female ~ data.HALE.1995.female$val))
+confint(lm(data.YLD.1995.female ~ data.HALE.1995.female$val))
+
+summary(lm(data.YLD.2015.female ~ data.HALE.2015.female$val))
+confint(lm(data.YLD.2015.female ~ data.HALE.2015.female$val))
 
 
-
-
-
-
+######################################################
 
 # Healthy life expectancy and disability gap
 
@@ -186,26 +195,6 @@ gap.HALE.2015.male - gap.HALE.1995.male
 gap.YLD.2015.male - gap.YLD.1995.male
 
 
-
-
-
-
-
-
-# Accelerating expansion of morbidity
-
-abline(lm(data.YLD.1995.female ~ data.HALE.1995.female$val), col="red", lty=2)
-abline(lm(data.YLD.2015.female ~ data.HALE.2015.female$val), col="red", lty=1)
-
-summary(lm(data.YLD.1995.female ~ data.HALE.1995.female$val))
-confint(lm(data.YLD.1995.female ~ data.HALE.1995.female$val))
-
-summary(lm(data.YLD.2015.female ~ data.HALE.2015.female$val))
-confint(lm(data.YLD.2015.female ~ data.HALE.2015.female$val))
-
-
-# Healthy life expectancy and disability gap
-
 (gap.HALE.1995.female <- round(max.HALE.1995.female - min.HALE.1995.female, 1))
 (gap.HALE.2015.female <- round(max.HALE.2015.female - min.HALE.2015.female, 1))
 gap.HALE.2015.female - gap.HALE.1995.female
@@ -216,27 +205,4 @@ gap.HALE.2015.female - gap.HALE.1995.female
 ((gap.YLD.2015.female - gap.YLD.1995.female) / gap.YLD.1995.female) * 100
 gap.YLD.2015.female - gap.YLD.1995.female
 
-points(data.HALE.1995.male.italy$val, 
-       data.YLD.1995.male.italy, 
-       col="blue",
-       cex=2,
-       pch=10)
-
-points(data.HALE.2015.male.italy$val, 
-       data.YLD.2015.male.italy, 
-       col="blue",
-       cex=2,
-       pch=10)
-
-points(data.HALE.1995.female.italy$val, 
-       data.YLD.1995.female.italy, 
-       col="red",
-       cex=2,
-       pch=10)
-
-points(data.HALE.2015.female.italy$val, 
-       data.YLD.2015.female.italy, 
-       col="red",
-       cex=2,
-       pch=10)
 
