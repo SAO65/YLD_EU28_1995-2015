@@ -1,4 +1,5 @@
 # Expansion of morbidity
+
 #Years lived with disability (YLDs)
 # Years of life lived with any short-term or long-term health loss.
 
@@ -63,53 +64,7 @@ data.HALE.2015.female.italy <- DT.HALE[DT.HALE$year == "2015" & DT.HALE$sex == "
 data.YLD.2015.female.italy <- data.LE.2015.female.italy$val - data.HALE.2015.female.italy$val
 
 
-######################################################
-
-# Preliminary Point Estimates
-
-min.HALE.1995.male <- round(min(data.HALE.1995.male$val), 1)
-max.HALE.1995.male <- round(max(data.HALE.1995.male$val), 1)
-median.HALE.1995.male <- round(median(data.HALE.1995.male$val),1)
-mad.HALE.1995.male <- round(mad(data.HALE.1995.male$val), 1)
-
-min.YLD.1995.male <- round(min(data.YLD.1995.male), 1)
-max.YLD.1995.male <- round(max(data.YLD.1995.male), 1)
-median.YLD.1995.male <- round(median(data.YLD.1995.male),1)
-mad.YLD.1995.male <- round(mad(data.YLD.1995.male), 1)
-
-min.HALE.2015.male <- round(min(data.HALE.2015.male$val), 1)
-max.HALE.2015.male <- round(max(data.HALE.2015.male$val), 1)
-median.HALE.2015.male <- round(median(data.HALE.2015.male$val),1)
-mad.HALE.2015.male <- round(mad(data.HALE.2015.male$val), 1)
-
-min.YLD.2015.male <- round(min(data.YLD.2015.male), 1)
-max.YLD.2015.male <- round(max(data.YLD.2015.male), 1)
-median.YLD.2015.male <- round(median(data.YLD.2015.male),1)
-mad.YLD.2015.male <- round(mad(data.YLD.2015.male), 1)
-
-
-min.HALE.1995.female <- round(min(data.HALE.1995.female$val), 1)
-max.HALE.1995.female <- round(max(data.HALE.1995.female$val), 1)
-median.HALE.1995.female <- round(median(data.HALE.1995.female$val),1)
-mad.HALE.1995.female <- round(mad(data.HALE.1995.female$val), 1)
-
-min.YLD.1995.female <- round(min(data.YLD.1995.female), 1)
-max.YLD.1995.female <- round(max(data.YLD.1995.female), 1)
-median.YLD.1995.female <- round(median(data.YLD.1995.female),1)
-mad.YLD.1995.female <- round(mad(data.YLD.1995.female), 1)
-
-min.HALE.2015.female <- round(min(data.HALE.2015.female$val), 1)
-max.HALE.2015.female <- round(max(data.HALE.2015.female$val), 1)
-median.HALE.2015.female <- round(median(data.HALE.2015.female$val),1)
-mad.HALE.2015.female <- round(mad(data.HALE.2015.female$val), 1)
-
-min.YLD.2015.female <- round(min(data.YLD.2015.female), 1)
-max.YLD.2015.female <- round(max(data.YLD.2015.female), 1)
-median.YLD.2015.female <- round(median(data.YLD.2015.female),1)
-mad.YLD.2015.female <- round(mad(data.YLD.2015.female), 1)
-
-
-#################################################
+##############################################################
 
 # Expansion of Morbidity
 
@@ -130,7 +85,6 @@ points(data.HALE.2015.male$val,
        cex=1.2,
        pch=16)
 
-
 points(data.HALE.1995.female$val, 
        data.YLD.1995.female, 
        col="red",
@@ -142,7 +96,6 @@ points(data.HALE.2015.female$val,
        col="red",
        cex=1.2,
        pch=16)
-
 
 axis(1, col.axis="black", las=1, cex.axis=0.7, tck=-.01)
 axis(2, col.axis="black", las=2, cex.axis=0.7, tck=-.01)
@@ -158,51 +111,28 @@ legend(53, 12,
 
 ######################################################
 
-# Accelerating expansion of morbidity
+# Growing morbidity gap
 
 abline(lm(data.YLD.1995.male ~ data.HALE.1995.male$val), col="blue", lty=2)
-abline(lm(data.YLD.2015.male ~ data.HALE.2015.male$val), col="blue", lty=1)
-
 summary(lm(data.YLD.1995.male ~ data.HALE.1995.male$val))
 confint(lm(data.YLD.1995.male ~ data.HALE.1995.male$val))
 
+
+abline(lm(data.YLD.2015.male ~ data.HALE.2015.male$val), col="blue", lty=1)
 summary(lm(data.YLD.2015.male ~ data.HALE.2015.male$val))
 confint(lm(data.YLD.2015.male ~ data.HALE.2015.male$val))
 
 
 abline(lm(data.YLD.1995.female ~ data.HALE.1995.female$val), col="red", lty=2)
-abline(lm(data.YLD.2015.female ~ data.HALE.2015.female$val), col="red", lty=1)
-
 summary(lm(data.YLD.1995.female ~ data.HALE.1995.female$val))
 confint(lm(data.YLD.1995.female ~ data.HALE.1995.female$val))
 
+
+abline(lm(data.YLD.2015.female ~ data.HALE.2015.female$val), col="red", lty=1)
 summary(lm(data.YLD.2015.female ~ data.HALE.2015.female$val))
 confint(lm(data.YLD.2015.female ~ data.HALE.2015.female$val))
 
 
-######################################################
 
-# Healthy life expectancy and disability gap
-
-(gap.HALE.1995.male <- round(max.HALE.1995.male - min.HALE.1995.male, 1))
-(gap.HALE.2015.male <- round(max.HALE.2015.male - min.HALE.2015.male, 1))
-gap.HALE.2015.male - gap.HALE.1995.male
-((gap.HALE.2015.male - gap.HALE.1995.male) / gap.HALE.1995.male) * 100
-
-(gap.YLD.1995.male <- round(max.YLD.1995.male - min.YLD.1995.male, 1))
-(gap.YLD.2015.male <- round(max.YLD.2015.male - min.YLD.2015.male, 1))
-((gap.YLD.2015.male - gap.YLD.1995.male) / gap.YLD.1995.male) * 100
-gap.YLD.2015.male - gap.YLD.1995.male
-
-
-(gap.HALE.1995.female <- round(max.HALE.1995.female - min.HALE.1995.female, 1))
-(gap.HALE.2015.female <- round(max.HALE.2015.female - min.HALE.2015.female, 1))
-gap.HALE.2015.female - gap.HALE.1995.female
-((gap.HALE.2015.female - gap.HALE.1995.female) / gap.HALE.1995.female) * 100
-
-(gap.YLD.1995.female <- round(max.YLD.1995.female - min.YLD.1995.female, 1))
-(gap.YLD.2015.female <- round(max.YLD.2015.female - min.YLD.2015.female, 1))
-((gap.YLD.2015.female - gap.YLD.1995.female) / gap.YLD.1995.female) * 100
-gap.YLD.2015.female - gap.YLD.1995.female
 
 
