@@ -17,6 +17,7 @@ head(HALE.raw.data)
 
 # Tidy Data
 library(data.table)
+library(ggplot2) 
 
 attach(LE.raw.data)
 attach(HALE.raw.data)
@@ -66,7 +67,7 @@ data.YLD.2015.female.italy <- data.LE.2015.female.italy$val - data.HALE.2015.fem
 
 ##############################################################
 
-# Expansion of Morbidity
+# Expansion of female and male morbidity
 
 plot(data.HALE.1995.male$val, 
      data.YLD.1995.male, 
@@ -76,8 +77,8 @@ plot(data.HALE.1995.male$val,
      xlim = c(52,75), 
      ylim=c(6, 12), 
      axes=F,
-     xlab="Healthy life expectancy (HALE)",
-     ylab="Years lived with disability (YLDs)")
+     xlab="Health-Adjusted Life expectancy (HALE)",
+     ylab="Years Lived with Disability (YLD)")
 
 points(data.HALE.2015.male$val, 
        data.YLD.2015.male, 
@@ -100,18 +101,20 @@ points(data.HALE.2015.female$val,
 axis(1, col.axis="black", las=1, cex.axis=0.7, tck=-.01)
 axis(2, col.axis="black", las=2, cex.axis=0.7, tck=-.01)
 
-legend(53, 12,  
+legend(67, 8,  
        c("Year 1995 Males","Year 2015 Males", "Year 1995 Females","Year 2015 Females"),
        pch=c(1,16,1,16),
        lty=c(2,1, 2,1),
-       cex=c(1,1,1,1),
+       cex=c(.9,.9,.9,.9),
        col=c("blue", "blue", "red", "red"),
        bty = "n")
+
+arrows(x, avg-sdev, x, avg+sdev, length=0.05, angle=90, code=3)
 
 
 ######################################################
 
-# Growing morbidity gap
+# Accelerating rate of increase of female morbidity
 
 abline(lm(data.YLD.1995.male ~ data.HALE.1995.male$val), col="blue", lty=2)
 summary(lm(data.YLD.1995.male ~ data.HALE.1995.male$val))
@@ -132,6 +135,8 @@ abline(lm(data.YLD.2015.female ~ data.HALE.2015.female$val), col="red", lty=1)
 summary(lm(data.YLD.2015.female ~ data.HALE.2015.female$val))
 confint(lm(data.YLD.2015.female ~ data.HALE.2015.female$val))
 
+
+######################################################
 
 
 
